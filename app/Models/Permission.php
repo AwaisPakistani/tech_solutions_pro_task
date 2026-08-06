@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\{Model, SoftDeletes};
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class Permission extends Model
+{
+    use HasFactory;
+    protected $guarded = [];
+    protected $table = 'permissions';
+    // protected $fillable= ['name'];
+    protected $casts = [
+        'is_active' => 'boolean'
+    ];
+    public function rolePermission()
+    {
+        return $this->hasMany(RolePermission::class);
+    }
+    public function scopeSearch($query, $search)
+    {
+        return $query->whereAny(
+            ['name'],
+            'like',
+            "%{$search}%"
+        );
+    }
+
+
+}
