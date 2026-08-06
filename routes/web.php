@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\admin\{AuthController, DashboardController, ModuleController, PermissionController, RoleController, UserController};
+use App\Http\Controllers\admin\{AuthController, DashboardController, ModuleController, PermissionController, RoleController, SalesController, UserController};
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -24,15 +24,16 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('unauthorized',function(){
             return view('admin.errors.forbidden');
         })->name('unauthorized');
-        // posts
-        Route::resource('posts', PostController::class);
+
 
         Route::middleware(['PermissionMiddleware'])->group(function () {
             Route::resource('users', UserController::class);
             Route::resource('roles', RoleController::class);
             Route::resource('permissions', PermissionController::class);
             Route::resource('modules', ModuleController::class);
-
+            // Sales Routes
+            Route::resource('sales', SalesController::class);
+            Route::get('sales-import',[SalesController::class,'sales_import'])->name('sales.import');
         });
     });
 });

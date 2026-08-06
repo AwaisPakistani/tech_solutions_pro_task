@@ -28,7 +28,10 @@
                             </a>
                             <ul class="submenu active">
                                 <li class="submenu-item ">
-                                    <a href="{{ route('admin.posts.index')}}">Posts</a>
+                                    <a href="{{ route('admin.sales.index')}}">Sales</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="{{ route('admin.sales.import')}}">Upload Sales in Excel</a>
                                 </li>
                             </ul>
                         </li>
