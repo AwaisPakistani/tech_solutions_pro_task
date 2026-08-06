@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->tinyInteger('status')->default(1)->comment('1 => Active, 0 => Blocked');
+            $table->tinyInteger('status')->default(1)->comment('1 => Active, 0 => Inactive');
             $table->timestamp('last_access')->nullable();
 
             $table->string('avatar')->nullable();

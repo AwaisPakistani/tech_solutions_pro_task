@@ -62,7 +62,10 @@
                                          {{$loop->iteration}}</td>
                                         <td>{{$Permission->name}}</td>
                                         <td>
-                                            @statusBadge($Permission->status)
+                                            @php
+                                            $status=$Permission->status
+                                            @endphp
+                                            @statusBadge($status)
                                         </td>
                                         <td>
                                          <x-action-buttons

@@ -62,7 +62,8 @@
                                          {{$loop->iteration}}</td>
                                         <td>{{$Role->name}}</td>
                                         <td>
-                                            @statusBadge($Role->status)
+
+                                            @statusBadge(1)
                                         </td>
                                         <td>
                                              <x-action-buttons

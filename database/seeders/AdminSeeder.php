@@ -24,6 +24,7 @@ class AdminSeeder extends Seeder
             'name' => 'Super Admin',
             'email' => 'superadmin@gmail.com',
             'password' => Hash::make('superadmin'),
+            'status'=>1,
         ]);
 
         $superAdmin->assignRole($superAdmin_role);
@@ -38,6 +39,8 @@ class AdminSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('adminuser'),
+            'status'=>1,
+
         ]);
         $Admin->assignRole($Admin_role);
         // Editor User and Role
@@ -49,6 +52,8 @@ class AdminSeeder extends Seeder
             'name' => 'Editor',
             'email' => 'editor@gmail.com',
             'password' => Hash::make('editoruser'),
+            'status'=>1,
+
         ]);
         $Editor->assignRole($editor_role);
     }

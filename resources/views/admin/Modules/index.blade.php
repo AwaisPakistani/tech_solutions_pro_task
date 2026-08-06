@@ -69,7 +69,10 @@
                                         <td>{{$Module->slug}}</td>
 
                                         <td>
-                                            @statusBadge($Module->status)
+                                             @php
+                                            $status=$Module->status
+                                            @endphp
+                                            @statusBadge($status)
                                         </td>
                                         <td>
                                             <x-action-buttons

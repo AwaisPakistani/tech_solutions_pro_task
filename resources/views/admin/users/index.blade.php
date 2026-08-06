@@ -66,7 +66,10 @@
                                         <td>{{$user->email}}</td>
                                         <td>{{ $user->roles[0]->name??'' }}</td>
                                         <td>
-                                            @statusBadge($user->status)
+                                            @php
+                                            $status=$user->status
+                                            @endphp
+                                            @statusBadge($status)
                                         </td>
                                         <td>
                                             <x-action-buttons
