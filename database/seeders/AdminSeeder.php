@@ -40,7 +40,6 @@ class AdminSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('adminuser'),
             'status'=>1,
-
         ]);
         $Admin->assignRole($Admin_role);
         // Editor User and Role

@@ -25,7 +25,7 @@ class ModuleSeeder extends Seeder
                     'Users',
                     'Roles',
                     'Permissions',
-                    'excel',
+                    'Sales',
                 ]
             ],
             [
@@ -40,7 +40,8 @@ class ModuleSeeder extends Seeder
                 'parent_id' => 3, // Editor Module
                 'modules' => [
                     'Editor Dashboard',
-                    'excel',
+                    'Users',
+                    'Sales',
                 ]
             ],
         ];
