@@ -10,13 +10,13 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->string('country', 100);
-            $table->string('item_type', 100);
-            $table->string('sales_channel', 100);
-            $table->bigInteger('order_id')->unsigned();
-            $table->double('unit_price', 15, 2);
-            $table->double('total_profit', 15, 2);
-            
+            $table->string('country', 100)->nullable();
+            $table->string('item_type', 100)->nullable();
+            $table->string('sales_channel', 100)->nullable();
+            $table->string('order_id')->nullable();
+            $table->string('unit_price')->nullable();
+            $table->string('total_profit')->nullable();
+
             $table->foreignId('created_by_id')->nullable()->constrained('users','id');
             $table->foreignId('updated_by_id')->nullable()->constrained('users','id');
             $table->softDeletes();

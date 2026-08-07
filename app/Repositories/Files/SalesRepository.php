@@ -4,7 +4,9 @@ namespace App\Repositories\Files;
 
 use App\Models\Sale;
 use App\Repositories\Interfaces\SalesRepositoryInterface;
-
+use App\Imports\SalesImport;
+use App\Jobs\UploadSalesRecords;
+use Maatwebsite\Excel\Facades\Excel;
 class SalesRepository implements SalesRepositoryInterface
 {
     protected $model;
@@ -49,5 +51,14 @@ class SalesRepository implements SalesRepositoryInterface
         $model->delete();
         return $model;
     }
-    
+
+    public function import($file)
+    {
+        UploadSalesRecords::dispatch(
+            $file->getRealPath()
+        );
+
+        return true;
+    }
+
 }

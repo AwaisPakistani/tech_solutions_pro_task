@@ -5,10 +5,11 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\{SaleUpdateRequest, SalesRequest};
+use App\Http\Requests\{SaleUpdateRequest, SalesImportRequest, SalesRequest};
 use App\Models\Sale;
 use App\Repositories\Interfaces\SalesRepositoryInterface;
-
+use App\Imports\SalesImport;
+use Maatwebsite\Excel\Facades\Excel;
 class SalesController extends Controller
 {
     protected $Salesinterface;
@@ -92,9 +93,19 @@ class SalesController extends Controller
         }
     }
 
-    // public function sales_import()
-    // {
-    //     dd('Sales Import');
-    //     return view('admin.Sales.import');
-    // }
+    public function sales_import()
+    {
+        return view('admin.Sales.import');
+    }
+
+    public function sales_upload(SalesImportRequest $request)
+    {
+        try {
+            $validated = $request->validated();
+            $this->Salesinterface->import($request->file('excel_import'));
+            return redirect()->route('admin.sales.index');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 }

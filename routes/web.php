@@ -34,6 +34,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
             // Sales Routes
             Route::resource('sales', SalesController::class);
             Route::get('sales-import',[SalesController::class,'sales_import'])->name('sales.import');
+            Route::post('sales-upload',[SalesController::class,'sales_upload'])->name('sales.upload');
         });
     });
 });

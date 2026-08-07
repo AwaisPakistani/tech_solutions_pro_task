@@ -33,10 +33,11 @@
                         <div class="card-body">
                             <form action="{{ route('admin.sales.upload') }}" method="POST"enctype="multipart/form-data"  class="form">@csrf
                                 <div class="row">
-                                    <div class="col-md-6 col-12">
+
+                                    <div class="col-md-12 col-12">
                                         <div class="form-group">
                                             <label for="title-column"> Excel File</label>
-                                            <input type="text" id="excel-file-column" value="{{ old('excel_import') }}" class="form-control @error('excel_import')
+                                            <input type="file" id="excel-file-column" value="{{ old('excel_import') }}" class="form-control @error('excel_import')
                                             is-invalid
                                             @enderror"
                                             placeholder="Import records in excel file" name="excel_import">
@@ -47,6 +48,7 @@
                                             @enderror
                                         </div>
                                     </div>
+
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit"
                                         class="btn btn-primary me-1 mb-1">Submit</button>

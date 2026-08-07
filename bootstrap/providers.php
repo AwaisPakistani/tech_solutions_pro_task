@@ -7,4 +7,5 @@ return [
     App\Providers\GatePolicyProvider::class,
     App\Providers\HorizonServiceProvider::class,
     App\Providers\RepositoryProvider::class,
+    App\Providers\TelescopeServiceProvider::class,
 ];
