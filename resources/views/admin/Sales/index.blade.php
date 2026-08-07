@@ -37,6 +37,12 @@
                             </div>
                         </div>
                         <div class="card-body">
+                             {{-- Per page selector --}}
+                               <x-no-of-pages
+                               perPageRoute="{{ route('admin.sales.index') }}"
+                               />
+                                {{-- Your existing search component --}}
+                                <x-search-record searchRoute="{{ route('admin.sales.index') }}" />
                             <table class="table table-striped" id="table1">
                                 <thead>
                                     <tr>
@@ -73,6 +79,11 @@
 
                                 </tbody>
                             </table>
+                             <div class="row">
+                                <div class="col-md-12 text-right">
+                                {{ $allRecords->withQueryString()->links() }}
+                                </div>
+                            </div>
                         </div>
                     </div>
 

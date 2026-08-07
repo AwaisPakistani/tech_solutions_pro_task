@@ -21,7 +21,7 @@ class SalesController extends Controller
     }
     public function index()
     {
-        $allRecords = $this->Salesinterface->all();
+        $allRecords = $this->Salesinterface->all(10);
 
         return view('admin.Sales.index', compact('allRecords'));
     }

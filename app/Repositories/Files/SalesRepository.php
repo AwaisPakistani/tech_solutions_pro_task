@@ -2,6 +2,10 @@
 
 namespace App\Repositories\Files;
 
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Supports\Collection;
+use Illuminate\Support\Facades\Request as NewRequest;
+
 use App\Models\Sale;
 use App\Repositories\Interfaces\SalesRepositoryInterface;
 use App\Imports\SalesImport;
@@ -16,16 +20,19 @@ class SalesRepository implements SalesRepositoryInterface
         $this->model = $model;
     }
 
-    public function all()
-    {
-       $result = [];
+   public function all(int $perpage = 10) : Paginator
+   {
+        $search = NewRequest::input('search');
 
-       $this->model->chunk(100, function ($rows) use (&$result) {
-            foreach ($rows as $row) {
-                $result[] = $row;
-            }
-        });
-        return $result;
+        $perpageRecords = NewRequest::input('perPage', $perpage);
+
+        return $this->model
+            ->newQuery()
+            ->latest()
+            ->when($search, fn ($query, $search) =>
+                $query->search($search)
+            )
+            ->paginate($perpageRecords);
     }
 
     public function find($id)
